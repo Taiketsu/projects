@@ -11,5 +11,7 @@ public interface UserDOA {
 	public List<User> getAll();
 	
 	public boolean insertPending(User user);
+	
+	public User findUser(int id);
 
 }

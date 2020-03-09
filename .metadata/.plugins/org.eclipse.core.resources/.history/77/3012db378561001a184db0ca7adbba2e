@@ -1,0 +1,139 @@
+package com.revature.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.model.Employee;
+import com.revature.model.User;
+import com.revature.repository.AccountDAOImpl;
+import com.revature.repository.EmployeeDAOImpl;
+import com.revature.repository.UserDAOImpl;
+
+public class EmployeeMenu extends Menu{
+	
+	EmployeeDAOImpl empDAO = new EmployeeDAOImpl();
+	AccountDAOImpl accDAO = new AccountDAOImpl();
+	UserDAOImpl userDAO = new UserDAOImpl();
+	private List<User> pending = new ArrayList<>();
+	
+
+	public void login() {
+		List<String> list = new ArrayList<>();
+		
+		list.add("Alright tell me your Employee ID!");
+		
+		printMenu(list);
+		
+		String input = INPUT.nextLine();
+		
+		while(!isInt(input)) {
+			System.out.println("Looks like you didn't put in a number");
+			System.out.println("Your emp ID should have been given to you");
+			System.out.println("and should be a number");
+			System.out.println("Please try again.");
+			
+			input = INPUT.nextLine();
+		}
+		
+		int id = Integer.parseInt(input);
+		
+		Employee emp = empDAO.findEmployee(id);
+		
+		if(emp != null) {
+		success(emp);
+		}else {
+			System.out.println("You either tried to make this fail or"
+					+ " it just didn't find the user");
+			login();
+		}
+	}
+
+	private void success(Employee emp) {
+		System.out.println("Found you!");
+		System.out.println("Please tell me your password!");
+		
+		String input = INPUT.nextLine();
+		
+		while(!input.equals(emp.getPassword())) {
+			System.out.println("Sorry that didn't match please try again");
+			input = INPUT.nextLine();
+			
+		}
+		
+		
+			checkPendingUsers(emp);
+		
+	}
+	
+	private void checkPendingUsers(Employee emp) {
+		pending = empDAO.getAllPending();
+		
+		if(pending.isEmpty()) {
+					
+			MainMenu(emp);
+		}else {
+			System.out.println("There are pending users for you to approve.");
+			System.out.println("Press enter to continue...");
+		
+			INPUT.nextLine();
+		
+			MainMenu(emp);
+		}
+	}
+
+	private void MainMenu(Employee emp) {
+		System.out.println("Welcome back, " + emp.getFirstName() + " " + emp.getLastName());
+		System.out.println("What would you like to do?");
+		System.out.println("Search for a user: Type search");
+		System.out.println("Approve a pending account: type approve");
+		System.out.println("Cancel Account: Type cancel");
+		
+		String input = INPUT.nextLine();
+		
+		switch(input.toLowerCase()) {
+		case "search":
+			SearchUser();
+			break;
+		case "approve":
+			ApproveAccount();
+			break;
+		case "cancel":
+			CancelAccount();
+			break;
+		default:
+			System.out.println("I didn't catch that please try again");
+			
+			MainMenu(emp);
+		}
+		
+	}
+
+	private void CancelAccount() {
+		System.out.println("please enter the user id number of the account\n"
+				+ " you would like to cancel!");
+		
+		String input = INPUT.nextLine();
+		
+		while(!isInt(input)) {
+			System.out.println("Sorry you must put in a number.");
+			System.out.println("Please try again!");
+			
+			input = INPUT.nextLine();
+		}
+		
+		int empID = Integer.parseInt(input);
+		
+		User user = 
+		
+	}
+
+	private void ApproveAccount() {
+		System.out.println("sent to approve account");
+		
+	}
+
+	private void SearchUser() {
+		System.out.println("Sent to search for user");
+		
+	}
+}

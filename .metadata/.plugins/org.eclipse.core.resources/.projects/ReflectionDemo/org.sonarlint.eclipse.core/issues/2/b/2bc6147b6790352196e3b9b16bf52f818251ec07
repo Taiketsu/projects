@@ -1,0 +1,18 @@
+
+‚
+java:S1104"MMake i a static final constant or non-public and provide accessors if needed.(¤œÃ]8µÕôÇˆ.HÊRMINORZVULNERABILITY
+ˆ
+java:S1104"MMake k a static final constant or non-public and provide accessors if needed.(®íÍ€ýÿÿÿÿ8µÕôÇˆ.HÌRMINORZVULNERABILITY
+p	java:S106"9Replace this use of System.out or System.err by a logger.(´‹¹öþÿÿÿÿ8µÕôÇˆ.HÍRMAJORZ
+CODE_SMELL
+c
+java:S1172"+Remove this unused method parameter "args".(×­Éêþÿÿÿÿ8ËþøÇˆ.HÏRMAJORZ
+CODE_SMELL
+ƒ
+java:S1104"MMake j a static final constant or non-public and provide accessors if needed.(éÎ¡ƒ8µÕôÇˆ.HËRMINORZVULNERABILITY
+\
+java:S1444"'Make this "public static i" field final(¤œÃ]8¡½ûÇˆ.HÐRMINORZVULNERABILITY
+]
+java:S1444"'Make this "public static j" field final(éÎ¡ƒ8¡½ûÇˆ.HÑRMINORZVULNERABILITY
+b
+java:S1444"'Make this "public static k" field final(®íÍ€ýÿÿÿÿ8¡½ûÇˆ.HÒRMINORZVULNERABILITY

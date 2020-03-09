@@ -1,0 +1,65 @@
+package com.revature.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.model.Employee;
+import com.revature.repository.EmployeeDAOImpl;
+
+public class EmployeeMenu extends Menu{
+	
+	EmployeeDAOImpl empDAO = new EmployeeDAOImpl();
+
+	public void login() {
+		List<String> list = new ArrayList<>();
+		
+		list.add("Alright tell me your Employee ID!");
+		
+		printMenu(list);
+		
+		String input = INPUT.nextLine();
+		
+		while(!isInt(input)) {
+			System.out.println("Looks like you didn't put in a number");
+			System.out.println("Your emp ID should have been given to you");
+			System.out.println("and should be a number");
+			System.out.println("Please try again.");
+			
+			input = INPUT.nextLine();
+		}
+		
+		int id = Integer.parseInt(input);
+		
+		Employee emp = empDAO.findEmployee(id);
+		
+		if(emp != null) {
+		success(emp);
+		}else {
+			System.out.println("You either tried to make this fail or"
+					+ " it just didn't find the user");
+			login();
+		}
+	}
+
+	private void success(Employee emp) {
+		System.out.println("Found you!");
+		System.out.println("Please tell me your password!");
+		
+		String input = INPUT.nextLine();
+		
+		while(!input.equals(emp.getPassword())) {
+			System.out.println("Sorry that didn't match please try again");
+			input = INPUT.nextLine();
+			
+		}
+		
+		
+			MainMenu(emp);
+		
+	}
+
+	private void MainMenu(Employee emp) {
+		System.out.println("Password accpted passed to the next menu!");
+		
+	}
+}

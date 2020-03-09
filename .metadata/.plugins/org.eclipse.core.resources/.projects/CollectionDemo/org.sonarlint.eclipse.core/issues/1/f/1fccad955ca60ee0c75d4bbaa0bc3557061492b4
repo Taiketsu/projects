@@ -1,0 +1,12 @@
+
+k	java:S106"9Replace this use of System.out or System.err by a logger.(àĞ8·ˆ©âˆ.HRMAJORZ
+CODE_SMELL
+p	java:S106$"9Replace this use of System.out or System.err by a logger.(Â€öÙşÿÿÿÿ8‡ğ¦ãˆ.H¿RMAJORZ
+CODE_SMELL
+p	java:S106"9Replace this use of System.out or System.err by a logger.(²…Ù·øÿÿÿÿ8—·Ÿâˆ.H›RMAJORZ
+CODE_SMELL
+F
+java:S1220""Move this file to a named package.HëRMINORZ
+CODE_SMELL
+n	java:S125'"<This block of commented-out lines of code should be removed.(ôïÅÏ8İ™öãˆ.HÛRMAJORZ
+CODE_SMELL

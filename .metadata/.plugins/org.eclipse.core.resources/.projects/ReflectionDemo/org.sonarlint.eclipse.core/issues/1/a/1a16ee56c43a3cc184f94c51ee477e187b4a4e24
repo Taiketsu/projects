@@ -1,0 +1,37 @@
+
+p	java:S1064"9Replace this use of System.out or System.err by a logger.(ÇòÄõúÿÿÿÿ8ÂÌÚ¿ˆ.H¿RMAJORZ
+CODE_SMELL
+k	java:S106,"9Replace this use of System.out or System.err by a logger.(£öÚÛ8ÂÌÚ¿ˆ.HÀRMAJORZ
+CODE_SMELL
+s	java:S125I"<This block of commented-out lines of code should be removed.(”ïÑûÿÿÿÿ8¾ù¤Èˆ.HçRMAJORZ
+CODE_SMELL
+k	java:S106L"9Replace this use of System.out or System.err by a logger.(Ù‚õ8…á¡Èˆ.HæRMAJORZ
+CODE_SMELL
+Q
+java:S1659!"Declare "j" on a separate line.(¡•ÿD8æ–Èˆ.HßRMINORZ
+CODE_SMELL
+Q
+java:S1659!"Declare "k" on a separate line.(¡•ÿD8æ–Èˆ.HàRMINORZ
+CODE_SMELL
+k	java:S106M"9Replace this use of System.out or System.err by a logger.(ğ‘úò8‰¼ï¿ˆ.HÈRMAJORZ
+CODE_SMELL
+p	java:S106%"9Replace this use of System.out or System.err by a logger.(÷Š¦üÿÿÿÿ8…á¡Èˆ.HåRMAJORZ
+CODE_SMELL
+r
+java:S1854A"?Remove this useless assignment to local variable "stringClass".(ÎÁõ¤8‰¼ï¿ˆ.HÂRMAJORZ
+CODE_SMELL
+w
+java:S1854B"?Remove this useless assignment to local variable "stringValue".(éŒå¦ÿÿÿÿÿ8‰¼ï¿ˆ.HÄRMAJORZ
+CODE_SMELL
+p	java:S106:"9Replace this use of System.out or System.err by a logger.(Å­Ëİúÿÿÿÿ8ÂÌÚ¿ˆ.H¾RMAJORZ
+CODE_SMELL
+j	java:S106*"9Replace this use of System.out or System.err by a logger.(“±ö8ÂÌÚ¿ˆ.H½RMAJORZ
+CODE_SMELL
+^
+java:S1148="#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÂÌÚ¿ˆ.H¼RMINORZVULNERABILITY
+Š
+java:S1215G"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“8‰¼ï¿ˆ.HÅRCRITICALZ
+CODE_SMELL
+g
+java:S1854@"5Remove this useless assignment to local variable "s".(ã·.8‰¼ï¿ˆ.HÃRMAJORZ
+CODE_SMELL

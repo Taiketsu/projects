@@ -1,0 +1,91 @@
+package com.revature;
+
+public class Account {
+	
+	private int accountNumber;
+	private int totalAmount;
+	private int debitAmount;
+	private int creditAmount;
+	
+	public Account() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Account(int accountNumber, int totalAmount, int debitAmount, int creditAmount) {
+		super();
+		this.accountNumber = accountNumber;
+		this.totalAmount = totalAmount;
+		this.debitAmount = debitAmount;
+		this.creditAmount = creditAmount;
+	}
+
+	public int getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(int accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
+	public int getTotalAmount() {
+		return totalAmount;
+	}
+
+	public void setTotalAmount(int totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+
+	public int getDebitAmount() {
+		return debitAmount;
+	}
+
+	public void setDebitAmount(int debitAmount) {
+		this.debitAmount = debitAmount;
+	}
+
+	public int getCreditAmount() {
+		return creditAmount;
+	}
+
+	public void setCreditAmount(int creditAmount) {
+		this.creditAmount = creditAmount;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + accountNumber;
+		result = prime * result + creditAmount;
+		result = prime * result + debitAmount;
+		result = prime * result + totalAmount;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Account))
+			return false;
+		Account other = (Account) obj;
+		if (accountNumber != other.accountNumber)
+			return false;
+		if (creditAmount != other.creditAmount)
+			return false;
+		if (debitAmount != other.debitAmount)
+			return false;
+		if (totalAmount != other.totalAmount)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Account [accountNumber=" + accountNumber + ", totalAmount=" + totalAmount + ", debitAmount="
+				+ debitAmount + ", creditAmount=" + creditAmount + "]";
+	}
+	
+	
+}

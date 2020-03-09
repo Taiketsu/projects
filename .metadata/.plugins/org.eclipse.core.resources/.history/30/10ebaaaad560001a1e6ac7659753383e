@@ -1,0 +1,160 @@
+package com.revature.services;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import com.revature.model.Account;
+import com.revature.model.User;
+import com.revature.repository.AccountDAOImpl;
+
+public class UserAccountMenu extends Menu {
+	
+	Scanner sc = GeneralMenu.INPUT;
+	
+	
+	AccountDAOImpl aDI = new AccountDAOImpl();
+	
+	String fName;
+	String lName;
+	int acctNumber;
+	double currBal;
+	double debts;
+	double credits;
+	Account acct;
+	
+	//opens up the menu 
+	public void openMenu(User user) {
+		List<String> list = new ArrayList<>();
+		acct =  aDI.findAccount(user.getId());
+		
+		fName = user.getFirstName();
+		lName = user.getLastName();
+		acctNumber = acct.getAccountNumber();
+		currBal = acct.getTotalAmount();
+		debts = acct.getDebitAmount();
+		credits = acct.getCreditAmount();
+			
+		list.add("Welcome in!");
+		list.add("I'm getting your account info now!");
+		list.add("Just press enter to continue!!");
+		
+		printMenu(list);
+		
+		sc.nextLine();
+		
+		displayAccountInfo();
+		
+	}
+	
+	//displays the current account information for the user then asks if the user would
+	// like to do anything with their account
+	
+	public void displayAccountInfo() {
+		
+		List<String> list = new ArrayList<>();
+		
+		// adds choices to be printed from my print menu function
+		list.add("Welcome back, " + fName + " " + lName);
+		list.add("Account Number: " + acctNumber);
+		list.add("Current Available Balance: " + currBal);
+		list.add("Pending Debits: " + debts);
+		list.add("Pending Credits: " + credits);
+		list.add("Is there anything that you would like to do?");
+		list.add("Please enter yes or no.");
+		
+		printMenu(list);
+		
+		handleChoice();
+		
+	}
+
+	private void handleChoice() {
+//		
+		String choice = sc.nextLine();
+		
+		switch(choice) {
+		case "yes":
+			nextMenu();
+			break;
+		case "no":
+			System.out.println("No problem!");
+			System.out.println("See you later then!!");
+			System.exit(0);
+			break;
+		default:
+			System.out.println("Sorry I didn't quite get that would you mind trying again?");
+			handleChoice();
+		}
+	}
+	
+	private void nextMenu() {
+		List<String> list = new ArrayList<>();
+		
+		list.add("What would you like to do?");
+		list.add("Deposit");
+		list.add("Withdraw");
+		list.add("Transfer");
+		
+		printMenu(list);
+		
+		switch(sc.nextLine().toLowerCase()) {
+		case "deposit":
+			System.out.println("Running deposit method");
+			break;
+		case "withdraw":
+			withdrawMoney();
+			break;
+		default:
+			System.out.println("Sorry I didn't catch that please try again");
+			System.out.println("Press Enter to continue");
+			sc.nextLine();
+			
+			nextMenu();
+		}
+	}
+
+	private void withdrawMoney() {
+		System.out.println("How much would you like to withdraw?");
+		
+		String input = sc.nextLine();
+		if(isNumber(input)) {
+			double amount = Double.parseDouble(input);
+			
+			if(amount >=0) {
+				System.out.println("Sorry! amount cannot be 0 or less than 0");
+				System.out.println("Please try again!");
+				System.out.println("Press enter to continue..");
+				
+				sc.nextLine();
+				withdrawMoney();
+			}else {
+				System.out.println("Alright I am withdrawing from the account now!");
+				if(aDI.withdraw(acct, amount)) {
+					currBal -= amount;
+					System.out.println("Alright that's done now!");
+					System.out.println("I'll send you back to the previous menu!");
+					System.out.println("Press enter to continue...");
+					
+					sc.nextLine();
+					displayAccountInfo();
+				}else {
+					System.out.println("Something went wrong!");
+					System.out.println("Please Try again");
+					System.out.println("Press enter to continue");
+					
+					sc.nextLine();
+					displayAccountInfo();
+				}
+			}
+		}else {
+			System.out.println("Sorry but you must enter a number");
+			System.out.println("Please try again!");
+			System.out.println("Press enter to continue...");
+			
+			sc.nextLine();
+			withdrawMoney();
+		}
+	}
+
+}

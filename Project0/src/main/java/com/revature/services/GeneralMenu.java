@@ -2,32 +2,44 @@ package com.revature.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
+import com.revature.Driver;
 import com.revature.model.User;
 import com.revature.repository.UserDAOImpl;
 
-public class GeneralMenu {
+public class GeneralMenu extends Menu {
 	
 	// Start of variables opens the scanner as input
 	// Header so no longer need to type the header manually
 	// makes an Arraylist that will be used to check user inputs.
-	public static final Scanner INPUT = new Scanner(System.in);
+	
 	public static final String HEADER = "+++++++++++++++++++++++++++++++++++++++++++++";
 	public List<User> users = new ArrayList<>();
 	private UserDAOImpl userDAO = new UserDAOImpl();
+	UserAccountMenu um = new UserAccountMenu();
+	EmployeeMenu em = new EmployeeMenu();
+	
+	//Test logging
+	private static Logger log = Logger.getLogger(Driver.class);
+	
 	
 	
 	// Start of the menus asks the user what they would like to do and goes from there
 	public void startMenu() {
-
-		System.out.println(HEADER);
-		System.out.println("Welcome to Revature Banking!");
-		System.out.println("What would you like to do today?");
-		System.out.println("log in");
-		System.out.println("sign up");
-		System.out.println("please type your response and use the actions I have given you.");
-		System.out.println(HEADER);
+		List<String> list = new ArrayList<>();
+		
+		log.info("Test start.");
+		
+		list.add("Welcome to Revature Banking!");
+		list.add("What would you like to do today?");
+		list.add("log in");
+		list.add("sign up");
+		list.add("please type your response and use the actions I have given you.");
+		
+		printMenu(list);
+		
 		decisionTree();
 		
 	}
@@ -38,7 +50,22 @@ public class GeneralMenu {
 		s = INPUT.nextLine();
 		switch(s) {
 		case "log in":
-			login();
+			System.out.println("Are you an employee?");
+			String str = INPUT.nextLine();
+			switch(str.toLowerCase()) {
+			case "yes":
+				System.out.println("Sending to employee login now.");
+				em.login();
+				break;
+			case "no":
+				login();
+				break;
+			default:
+				System.out.println("I didn't catch that.");
+				System.out.println("Please try again.");
+				System.out.println("Press enter to continue");
+				startMenu();
+			}
 			break;
 		case "sign up":
 			signup();
@@ -179,9 +206,10 @@ public class GeneralMenu {
 	private void login() {
 		boolean bool = false;
 		User loggedUser = null;
+		boolean trueBool = false;
 		
 		System.out.println(HEADER);
-		System.out.println("Welcome back!");
+		System.out.println("Alright!");
 		System.out.println("Please tell me your username!");
 		System.out.println(HEADER);
 		
@@ -190,9 +218,11 @@ public class GeneralMenu {
 		for(User user : users) {
 			bool = checkUserInput(s, user);	
 			if(bool == true) {
-				loggedUser = user;}
+				loggedUser = user;
+				trueBool = true;
+			}
 		}
-		if(bool == true) {
+		if(trueBool == true) {
 			System.out.println(HEADER);
 			System.out.println("Welcome back, " + loggedUser.getUserName() + "!");
 			System.out.println("What is your password?");
@@ -205,18 +235,24 @@ public class GeneralMenu {
 				System.out.println("Alright! I am now logging you in and will"
 						+ "redirect you to the correct menu!");
 				System.out.println(HEADER);
+				
+				um.openMenu(loggedUser);
 			}else {
 				System.out.println(HEADER);
 				System.out.println("I am sorry but your password didn't match"
 						+ "what I have on file check spelling and try again.");
+				System.out.println("Press enter to continue");
 				System.out.println(HEADER);
+				INPUT.nextLine();
 				login();
 			}
 		}else {
 			System.out.println(HEADER);
 			System.out.println("I'm sorry I couldn't find a user named that.");
 			System.out.println("Please check your spelling and try again.");
+			System.out.println("Please press enter to continue.");
 			System.out.println(HEADER);
+			INPUT.nextLine();
 			login();
 		}
 	}	

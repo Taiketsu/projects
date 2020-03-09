@@ -1,0 +1,24 @@
+
+_
+java:S1612",Replace this lambda with a method reference.(¢ëï‚8ÿ³Ÿêˆ.H¢RMINORZ
+CODE_SMELL
+_
+java:S1602",Remove useless curly braces around statement(¢ëï‚8÷êˆ.H RMINORZ
+CODE_SMELL
+k	java:S106""9Replace this use of System.out or System.err by a logger.(”Øò¡8Şã¡êˆ.H£RMAJORZ
+CODE_SMELL
+d
+java:S1611"1Remove the parentheses around the "str" parameter(¡ºÙô8óšéˆ.HóRMINORZ
+CODE_SMELL
+j	java:S106"9Replace this use of System.out or System.err by a logger.(ƒÚáB8å£¢éˆ.H÷RMAJORZ
+CODE_SMELL
+d
+java:S1611"1Remove the parentheses around the "str" parameter(î‰¥Ø8÷êˆ.HŸRMINORZ
+CODE_SMELL
+p	java:S106"9Replace this use of System.out or System.err by a logger.(Å­Ëİúÿÿÿÿ8÷êˆ.H¡RMAJORZ
+CODE_SMELL
+d
+java:S1611"1Remove the parentheses around the "str" parameter(¢ëï‚8óšéˆ.HôRMINORZ
+CODE_SMELL
+p	java:S106("9Replace this use of System.out or System.err by a logger.(Ä¢ò™øÿÿÿÿ8¿ğ¯êˆ.H¤RMAJORZ
+CODE_SMELL

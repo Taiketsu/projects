@@ -1,0 +1,14 @@
+package com.revature.repository;
+
+import java.util.List;
+
+import com.revature.model.Employee;
+
+public interface EmployeeDAO {
+	
+	public boolean insert();
+	public boolean moveUser();
+	public List<Employee> getAll();
+	
+
+}

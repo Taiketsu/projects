@@ -1,0 +1,57 @@
+package com.revature;
+
+import java.util.Scanner;
+
+import org.apache.log4j.Logger;
+
+public class Menu {
+	
+	private static Logger log = Logger.getLogger(Menu.class);
+	static Scanner sc = new Scanner(System.in);
+	
+	
+	/**
+	 * This starts the menu interaction and prompts the user to sign in
+	 * 
+	 * @param takes no parameters
+	 */
+	public void startMenu() {
+		
+		System.out.println("+++++++++++++++++++++++++++++++++++++");
+		System.out.println("Hello! Welcome to Revature Banking!");
+		System.out.println("Let me know if you want to sign up or \nlogin by typing signup "
+				+ "or login.");
+		System.out.println("+++++++++++++++++++++++++++++++++++++");
+		String s = sc.nextLine();
+		checkStart(s);
+	}
+	
+	/**
+	 * Checks the input of the user to proceed to the appropriate menu
+	 * 
+	 * @param String
+	 */
+
+	private void checkStart(String s) {
+		switch(s.toLowerCase()) {
+		case "sign up":
+			SignUp();
+			break;
+		case "login":
+			Login();
+			break;
+		default:
+			System.out.println("I didn't get that please use either sign up or login.");
+			checkStart(sc.nextLine());
+		}
+	}
+
+	private void Login() {
+		System.out.println("Login was passed!");
+	}
+
+	private void SignUp() {
+		System.out.println("SignUp was passed!");
+	}
+
+}

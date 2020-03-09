@@ -1,0 +1,24 @@
+package com.revature;
+
+public class Account {
+	
+	private int accountNumber;
+	private int totalAmount;
+	private int debitAmount;
+	private int creditAmount;
+	
+	public Account() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Account(int accountNumber, int totalAmount, int debitAmount, int creditAmount) {
+		super();
+		this.accountNumber = accountNumber;
+		this.totalAmount = totalAmount;
+		this.debitAmount = debitAmount;
+		this.creditAmount = creditAmount;
+	}
+	
+	
+}

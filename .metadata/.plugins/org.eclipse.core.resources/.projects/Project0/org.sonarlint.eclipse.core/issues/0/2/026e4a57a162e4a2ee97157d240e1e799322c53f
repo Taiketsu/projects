@@ -1,0 +1,35 @@
+
+s
+java:S20950"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(ÊõÞàþÿÿÿÿHâRBLOCKERZBUG
+s	java:S125Z"<This block of commented-out lines of code should be removed.(€…¨Ìýÿÿÿÿ8ÝõŸ·‹.HëRMAJORZ
+CODE_SMELL
+}
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÐÀœ¢8Äà¸º‹.H¬RBLOCKERZBUG
+W
+java:S1148 "#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿHåRMINORZVULNERABILITY
+W
+java:S1148]"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿHäRMINORZVULNERABILITY
+s
+java:S2095."GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡ÀûÿÿÿÿHáRBLOCKERZBUG
+^
+java:S1148="#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8Äà¸º‹.H­RMINORZVULNERABILITY
+}
+java:S2095k"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÐÀœ¢8Û±Í¾‹.HöRBLOCKERZBUG
+z
+java:S2095N"GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ8µ¯š·‹.HèRBLOCKERZBUG
+w
+java:S2095€"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÐÀœ¢HãRBLOCKERZBUG
+n	java:S125`"<This block of commented-out lines of code should be removed.(×ª¡Ì8ÝõŸ·‹.HìRMAJORZ
+CODE_SMELL
+_
+java:S1148ˆ"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8µ¯š·‹.HêRMINORZVULNERABILITY
+z
+java:S2095P"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(ÊõÞàþÿÿÿÿ8µ¯š·‹.HéRBLOCKERZBUG
+^
+java:S1148s"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8Û±Í¾‹.H÷RMINORZVULNERABILITY
+~
+java:S2095”"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(‚‘ìÝ8ÞÄÁ‹.HœRBLOCKERZBUG
+_
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ÞÄÁ‹.HRMINORZVULNERABILITY
+s	java:S125"<This block of commented-out lines of code should be removed.(ñ˜ú›üÿÿÿÿ8ÃšîÁ‹.H RMAJORZ
+CODE_SMELL

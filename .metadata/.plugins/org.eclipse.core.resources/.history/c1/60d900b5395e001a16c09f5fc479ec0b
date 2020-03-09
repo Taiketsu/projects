@@ -1,0 +1,19 @@
+package com.revature.repository;
+
+import java.util.List;
+
+import com.revature.models.Employee;
+
+public class EmployeeDOAImpl implements EmployeeDOA {
+
+	@Override
+	public boolean insert(Employee emp) {
+		return false;
+	}
+
+	@Override
+	public List<Employee> findAll() {
+		return null;
+	}
+
+}

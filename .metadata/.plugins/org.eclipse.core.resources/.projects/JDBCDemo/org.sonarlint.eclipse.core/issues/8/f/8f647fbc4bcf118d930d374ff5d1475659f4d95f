@@ -1,0 +1,19 @@
+
+‚
+java:S3973b"GUse indentation to denote the code conditionally executed by this "if".(ÁÀŸÈÿÿÿÿÿ8õüÂ³Š.H©RCRITICALZ
+CODE_SMELL
+i
+java:S1135"2Complete the task associated to this TODO comment.(ƒŠ® úÿÿÿÿ8õüÂ³Š.HªRINFOZ
+CODE_SMELL
+}
+java:S3973i"GUse indentation to denote the code conditionally executed by this "if".(Å›‘8õüÂ³Š.H«RCRITICALZ
+CODE_SMELL
+|
+java:S3973n"GUse indentation to denote the code conditionally executed by this "if".(öğ´98õüÂ³Š.H¬RCRITICALZ
+CODE_SMELL
+ˆ
+java:S3776Y"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÜÑã8õüÂ³Š.H­RCRITICALZ
+CODE_SMELL
+t
+java:S1126p"AReplace this if-then-else statement by a single return statement.(ÙÜ¬»8õüÂ³Š.H®RMINORZ
+CODE_SMELL

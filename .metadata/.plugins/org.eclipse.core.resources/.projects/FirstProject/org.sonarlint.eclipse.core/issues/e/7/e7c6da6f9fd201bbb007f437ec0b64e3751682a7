@@ -1,0 +1,24 @@
+
+v	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¯åÕøÿÿÿÿHÊRMAJORZ
+CODE_SMELL
+q	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(÷µê²HËRMAJORZ
+CODE_SMELL
+]
+java:S1143"5Remove this return statement from this finally block.(ÚåöHÌRCRITICALZBUG
+µ
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ş†˜­ûÿÿÿÿHÍRCRITICALZ
+CODE_SMELL
+a
+java:S1854"5Remove this useless assignment to local variable "d".(„È£€HÎRMAJORZ
+CODE_SMELL
+©
+java:S1130"xRemove the declaration of thrown exception 'com.revature.exceptions.NegativeEggsException' which is a runtime exception.(ş†˜­ûÿÿÿÿHÏRMINORZ
+CODE_SMELL
+‘
+java:S1130"eRemove the declaration of thrown exception 'java.lang.RuntimeException' which is a runtime exception.(÷µê²HĞRMINORZ
+CODE_SMELL
+d	java:S106"9Replace this use of System.out or System.err by a logger.(ßñ…¦HÑRMAJORZ
+CODE_SMELL
+R
+java:S1481"&Remove this unused "d" local variable.(„È£€HÒRMINORZ
+CODE_SMELL

@@ -1,0 +1,10 @@
+package com.revature;
+
+import java.util.Scanner;
+
+import org.apache.log4j.Logger;
+
+public class Menu {
+	
+	
+}

@@ -1,0 +1,30 @@
+package com.revature.repository;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.models.Employee;
+import com.revature.util.ConnectionUtil;
+
+public class EmployeeDOAImpl implements EmployeeDOA {
+
+	@Override
+	public boolean insert(Employee emp) {
+		return false;
+	}
+
+	@Override
+	public List<Employee> findAll() {
+		List<Employee> list = new ArrayList<>();
+		
+		try (Connection conn = ConnectionUtil.getConnection()){
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.revature;
+
+import java.util.Scanner;
+
+public class Menu {
+	
+	static Scanner sc = new Scanner(System.in);
+
+}

@@ -1,0 +1,196 @@
+package com.revature.services;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import com.revature.model.User;
+
+public class GeneralMenu {
+	
+	// Start of variables opens the scanner as input
+	// Header so no longer need to type the header manually
+	// makes an Arraylist that will be used to check user inputs.
+	public static final Scanner INPUT = new Scanner(System.in);
+	public static final String HEADER = "+++++++++++++++++++++++++++++++++++++++++++++";
+	public List<User> users = new ArrayList<>();
+	
+	
+	// Start of the menus asks the user what they would like to do and goes from there
+	public void startMenu() {
+
+		System.out.println(HEADER);
+		System.out.println("Welcome to Revature Banking!");
+		System.out.println("What would you like to do today?");
+		System.out.println("log in");
+		System.out.println("sign up");
+		System.out.println("please type your response and use the actions I have given you.");
+		System.out.println(HEADER);
+		decisionTree();
+		
+	}
+	
+	// Handles the logic for user decision then takes them to the correct menu to continue
+	private void decisionTree() {
+		String s;
+		s = INPUT.nextLine();
+		switch(s) {
+		case "log in":
+			login();
+			break;
+		case "sign up":
+			signup();
+			break;
+		default:
+			System.out.println(HEADER);
+			System.out.println("I didn't understand that. Please try again.");
+			System.out.println(HEADER);
+			decisionTree();
+		}
+	}
+	
+	// Start of sign up logic prompts the user to enter a user name
+	private void signup() {
+		System.out.println(HEADER);
+		System.out.println("Alright let's get going then!");
+		System.out.println("First tell me what you would like your username to be.");
+		System.out.println("This is not case sensitive but it does have to be unique!");
+		System.out.println(HEADER);
+		String s = INPUT.nextLine();
+		
+		signUpLogic(s);
+	}
+
+	// Does multiple things it first makes sure the string entered isn't blank
+	// if not it then starts up a for loop that iterates through each user in ther
+	// array users. sending them each to check user input. then checks what is returned
+	// if true it turns true bool over to true. if it comes back false nothing happens
+	// it then sends true bool over to check false to finish the logic.
+	private void signUpLogic(String s) {
+		if(!s.equals("")) {
+			boolean bool = true;
+			boolean trueBool = false;
+			for(User user : users) {
+				bool = checkUserInput(s, user);
+				if(bool == true) {
+					trueBool = true;
+				}
+					}
+			checkFalse(s, trueBool);
+		}else {
+			System.out.println(HEADER);
+			System.out.println("Your username cannot be blank!");
+			System.out.println(HEADER);
+			signUpLogic(INPUT.nextLine());
+		}
+	}
+	
+	// simply checks the state of trueBool if it remained false it will initiate
+	// get user info if true lets the user know the name they tried has already 
+	// been taken then takes input and sends them back to signUpLogic() to try again
+	private void checkFalse(String s, boolean bool) {
+		if(bool == false) {
+			getUserInfo();
+		}else {
+			System.out.println(HEADER);
+			System.out.println("I'm sorry that was already taken. Please try a new name.");
+			System.out.println(HEADER);
+			
+			signUpLogic(INPUT.nextLine());
+		}
+	}
+	
+	// Gets the remaining information needed to fully create a provisional user
+	// then sends back to the main menu
+	
+	private void getUserInfo() {
+		String firstName = null;
+		String lastName = null;
+		String email = null;
+		String p = null;
+		
+		System.out.println(HEADER);
+		System.out.println("Username accepted! Please make your password \n"
+			+ "This is case sensitive!");
+		System.out.println(HEADER);
+		
+		p = INPUT.nextLine();
+		
+		System.out.println(HEADER);
+		System.out.println("Thanks for that!");
+		System.out.println("Let me ask a few questions about you now!");
+		System.out.println("What is your First Name?");
+		System.out.println(HEADER);
+		
+		firstName = INPUT.nextLine();
+		
+		System.out.println(HEADER);
+		System.out.println("Thanks!");
+		System.out.println("What's your last name?");
+		System.out.println(HEADER);
+		
+		lastName = 	INPUT.nextLine();
+		
+		System.out.println(HEADER);
+		System.out.println("Last question I promise!!");
+		System.out.println("What's your email address?");
+		System.out.println(HEADER);
+		
+		email = INPUT.nextLine();
+		
+		System.out.println(HEADER);
+		System.out.println("Alright user has been created!");
+		System.out.println("I am now going to send you back to the main menu.");
+		System.out.println("Press Enter to continue...");
+		System.out.println(HEADER);
+		
+		INPUT.nextLine();
+		startMenu();
+	}
+	
+	// Checks user name returns false if it doesn't match, returns true if it does
+	private boolean checkUserInput(String s, User user) {
+		if(!s.toLowerCase().equalsIgnoreCase(user.getUserName())) {
+			return false;
+		}
+		return true;
+		
+	}
+	
+	// Start of the login logic prompts user for their user name and password
+	// it saves the user that was found to match them and then checks the password
+	// will then either kick them out if credentials were wrong
+	// or will load them into the appropriate menu depending on if they are a customer or
+	// an employee
+	
+	private void login() {
+		boolean bool = false;
+		User loggedUser = null;
+		
+		System.out.println(HEADER);
+		System.out.println("Welcome back!");
+		System.out.println("Please tell me your username!");
+		System.out.println(HEADER);
+		
+		String s = INPUT.nextLine();
+		
+		for(User user : users) {
+			bool = checkUserInput(s, user);	
+			if(bool == true) {
+				loggedUser = user;}
+		}
+		if(bool == true) {
+			System.out.println(HEADER);
+			System.out.println("Welcome back, " + loggedUser.getUserName() + "!");
+			System.out.println("What is your password?");
+			System.out.println(HEADER);
+		}else {
+			System.out.println(HEADER);
+			System.out.println("I'm sorry I couldn't find a user named that.");
+			System.out.println("Please check your spelling and try again.");
+			System.out.println(HEADER);
+		}
+	}	
+	
+
+}

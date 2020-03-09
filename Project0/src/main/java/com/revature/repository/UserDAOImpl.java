@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.revature.model.Account;
 import com.revature.model.User;
 import com.revature.util.ConnectionUtil;
 
@@ -85,6 +86,42 @@ public class UserDAOImpl implements UserDOA{
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+
+	@Override
+	public User findUser(int userID) {
+		User user = null;
+		
+		try (Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "SELECT * FROM customers " + 
+						"WHERE customer_id = " + userID;
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				int id = rs.getInt("customer_id");
+				String userName = rs.getString("user_name");
+				String password = rs.getString("password");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				String email = rs.getString("email");
+			
+				
+				
+				
+				user = new User(id, userName, password, firstName,lastName,email);
+				//list.add(account);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
+		//return list;
 	}
 }
 

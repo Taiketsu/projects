@@ -1,0 +1,13 @@
+package com.revature.model;
+
+public class Employee {
+	
+	private int employeeID;
+	private String userName;
+	private String password;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private int salary;
+
+}

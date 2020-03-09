@@ -1,0 +1,126 @@
+package com.revature.repository;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.model.Account;
+import com.revature.util.ConnectionUtil;
+
+public class AccountDAOImpl implements AccountDAO {
+
+	@Override
+	public boolean insert(Account account) {
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "INSERT INTO account (balance) VALUES (?)";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			stmt.setDouble(1, account.getTotalAmount());
+			
+		
+			
+			return stmt.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+
+	@Override
+	public List<Account> getAll() {
+		
+		List<Account> list = new ArrayList<>();
+		
+		try (Connection conn = ConnectionUtil.getConnection()){
+			String sql = "SELECT * FROM account";
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				int id = rs.getInt("account_number");
+				double balance = rs.getDouble("balance");
+				
+				
+				
+				Account account = new Account(id, balance, 0, 0);
+				list.add(account);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+
+	@Override
+	public Account findAccount(int i) {
+		
+		Account account = null;
+		
+		try (Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "SELECT * FROM ACCOUNT_EMPLOYEE_JT " + 
+						"LEFT JOIN ACCOUNT ON ID = ACCOUNT_ID " + 
+						"WHERE EMPLOYEE_ID = " + i;
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				int id = rs.getInt("Account_ID");
+				double balance = rs.getDouble("balance");
+				
+				
+				
+				account = new Account(id, balance, 0, 0);
+				//list.add(account);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return account;
+		//return list;
+	}
+
+
+	@Override
+	public boolean withdraw(Account acc, double amount) {
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "UPDATE account "
+					+ "SET balance = ?"
+					+ "WHERE ID = ?";
+			sql = "Select * from customers";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			stmt.setDouble(1, acc.getTotalAmount() - amount);
+			stmt.setInt(2, acc.getAccountNumber());
+			
+		
+			System.out.println("the statement returned false");
+			return stmt.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println("Nah it returned false outside of the try catch");
+		return false;
+	}
+
+
+	@Override
+	public boolean deposit(Account acc, double amount) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

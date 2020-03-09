@@ -1,0 +1,7 @@
+
+r
+java:S1118":Add a private constructor to hide the implicit public one.(šŒ›Ãýÿÿÿÿ8°þµóˆ.HõRMAJORZ
+CODE_SMELL
+p	java:S106
+"9Replace this use of System.out or System.err by a logger.(ãŒÂÔøÿÿÿÿ8°þµóˆ.HöRMAJORZ
+CODE_SMELL

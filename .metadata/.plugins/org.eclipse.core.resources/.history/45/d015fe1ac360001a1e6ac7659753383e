@@ -1,0 +1,88 @@
+package com.revature.services;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class UserAccountMenu {
+	
+	String st = GeneralMenu.HEADER;
+	Scanner sc = GeneralMenu.INPUT;
+	GeneralMenu gm = new GeneralMenu();
+	String fName = "Nathan";
+	String lName = "Mejia";
+	int acctNumber = 1;
+	double currBal= 100.00;
+	double debts = 0;
+	double credits = 0;
+	
+	//opens up the menu 
+	public void openMenu() {
+		List<String> list = new ArrayList<>();
+			
+		list.add("Welcome in!");
+		list.add("I'm getting your account info now!");
+		list.add("Just press enter to continue!!");
+		
+		gm.printMenu(list);
+		
+		sc.nextLine();
+		
+		displayAccountInfo();
+		
+	}
+	
+	//displays the current account information for the user then asks if the user would
+	// like to do anything with their account
+	
+	public void displayAccountInfo() {
+		
+		List<String> list = new ArrayList<>();
+		
+		// adds choices to be printed from my print menu function
+		list.add("Welcome back, " + fName + " " + lName);
+		list.add("Account Number: " + acctNumber);
+		list.add("Current Available Balance: " + currBal);
+		list.add("Pending Debits: " + debts);
+		list.add("Pending Credits: " + credits);
+		list.add("Is there anything that you would like to do?");
+		list.add("Please enter yes or no.");
+		
+		gm.printMenu(list);
+		
+		handleChoice();
+		
+	}
+
+	private void handleChoice() {
+//		
+		String choice = sc.nextLine();
+		
+		switch(choice) {
+		case "yes":
+			nextMenu();
+			System.out.println("Travelling to next menu");
+			break;
+		case "no":
+			System.out.println("No problem!");
+			System.out.println("See you later then!!");
+			System.exit(0);
+			break;
+		default:
+			System.out.println("Sorry I didn't quite get that would you mind trying again?");
+			handleChoice();
+		}
+	}
+	
+	private void nextMenu() {
+		List<String> list = new ArrayList<>();
+		
+		list.add("What would you like to do?");
+		list.add("Deposit");
+		list.add("Withdraw");
+		list.add("Transfer");
+		
+		gm.printMenu(list);
+	}
+
+}

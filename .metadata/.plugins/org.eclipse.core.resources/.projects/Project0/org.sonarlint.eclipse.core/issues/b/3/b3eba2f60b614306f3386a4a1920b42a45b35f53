@@ -1,0 +1,19 @@
+
+ˆ	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ºåóÿÿÿÿÿ8šÊÄŠ.HšRMINORZ
+CODE_SMELL
+ˆ	java:S1176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ°ú–úÿÿÿÿ8šÊÄŠ.H™RMINORZ
+CODE_SMELL
+z
+java:S2095/"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(ÊõŞàşÿÿÿÿ8šÊÄŠ.HRBLOCKERZBUG
+^
+java:S1148?"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8šÊÄŠ.H›RMINORZVULNERABILITY
+}
+java:S2095J"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ĞÀœ¢8Ø«¦ìŠ.HRBLOCKERZBUG
+^
+java:S1148 "#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¥á·ÄŠ.H RMINORZVULNERABILITY
+^
+java:S1148U"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ø«¦ìŠ.HœRMINORZVULNERABILITY
+z
+java:S2095-"GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ8šÊÄŠ.H¡RBLOCKERZBUG
+}
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ĞÀœ¢8¥á·ÄŠ.HŸRBLOCKERZBUG

@@ -1,0 +1,54 @@
+package com.revature.util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class ConnectionUtil {
+	
+	private static Connection conn = null;
+	
+	public static Connection getConnection() {
+		/*
+		 * We will use driver manager to actually connect to our database
+		 * 
+		 * we need to provide it a few arguments
+		 * 		JDBC:oracle:thing:@ENDPOINT:port:sid
+		 * 		username
+		 * 		password
+		 * 
+		 * for this example we will likely just write our arguments in strings directly
+		 * however if we commit this to our github repo our credentials in are available
+		 * to the public so it is far safer to store credentials as a environment variable
+		 * and just read them in the java application
+		 * 
+		 * NOTE: when you modify environment variables you must restart STS to have them take
+		 * effect
+		 */
+		
+		/*
+		 * try { Class.forName("oracle.jdbc.driver.OracleDriver");
+		 * 
+		 * // This uses reflection to confirm that a class with this // fully qualified
+		 * name is available
+		 * 
+		 * try { conn = DriverManager.getConnection(
+		 * "jdbc:oracle:thin:@dbtraining.cgprctiahy3l.us-east-2.rds.amazonaws.com:1521:ORCL",
+		 * "admin", "password"); } catch (SQLException e) { e.printStackTrace(); }
+		 * 
+		 * }catch(ClassNotFoundException e){ e.printStackTrace(); } return conn;
+		 */
+		
+		try {
+			
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			
+			String[] creds = System.getenv("DBCreds").split(";");
+			
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		
+	}
+
+}

@@ -9,6 +9,7 @@ public class Employee {
 	private String lastName;
 	private String email;
 	private int salary;
+	private String title;
 	
 	public Employee() {
 		super();
@@ -16,7 +17,7 @@ public class Employee {
 	}
 
 	public Employee(int employeeID, String userName, String password, String firstName, String lastName, String email,
-			int salary) {
+			int salary, String title) {
 		super();
 		this.employeeID = employeeID;
 		this.userName = userName;
@@ -25,6 +26,7 @@ public class Employee {
 		this.lastName = lastName;
 		this.email = email;
 		this.salary = salary;
+		this.title = title;
 	}
 
 	public int getEmployeeID() {
@@ -83,6 +85,14 @@ public class Employee {
 		this.salary = salary;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -93,6 +103,7 @@ public class Employee {
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + salary;
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
@@ -128,6 +139,11 @@ public class Employee {
 			return false;
 		if (salary != other.salary)
 			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
 		if (userName == null) {
 			if (other.userName != null)
 				return false;
@@ -140,7 +156,7 @@ public class Employee {
 	public String toString() {
 		return "Employee [employeeID=" + employeeID + ", userName=" + userName + ", password=" + password
 				+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", salary=" + salary
-				+ "]";
+				+ ", title=" + title + "]";
 	}
 	
 	

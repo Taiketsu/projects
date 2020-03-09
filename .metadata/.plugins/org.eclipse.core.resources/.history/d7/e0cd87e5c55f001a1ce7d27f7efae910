@@ -1,0 +1,37 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.revature.model.Account;
+import com.revature.repository.AccountDAO;
+import com.revature.util.ConnectionUtil;
+
+public class AccountDAOImpl implements AccountDAO {
+
+	@Override
+	public boolean insert(Account account) {
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "INSERT INTO account (balance) VALUES (?)";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			stmt.setDouble(1, account.getTotalAmount());
+			
+		
+			
+			return stmt.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	}
+
+	@Override
+	public List<Account> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

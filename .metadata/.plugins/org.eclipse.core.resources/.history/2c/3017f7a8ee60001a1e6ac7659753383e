@@ -1,0 +1,163 @@
+package com.revature.repository;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import com.revature.model.Account;
+import com.revature.util.ConnectionUtil;
+
+public class AccountDAOImpl implements AccountDAO {
+
+	Logger log = new Logger(AccountDAOImpl.class);
+	@Override
+	public boolean insert(Account account) {
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "INSERT INTO account (balance) VALUES (?)";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			stmt.setDouble(1, account.getTotalAmount());
+			
+		
+			
+			return stmt.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+
+	@Override
+	public List<Account> getAll() {
+		
+		List<Account> list = new ArrayList<>();
+		
+		try (Connection conn = ConnectionUtil.getConnection()){
+			String sql = "SELECT * FROM account";
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				int id = rs.getInt("account_number");
+				double balance = rs.getDouble("balance");
+				
+				
+				
+				Account account = new Account(id, balance, 0, 0);
+				list.add(account);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+
+	@Override
+	public Account findAccount(int i) {
+		
+		Account account = null;
+		
+		try (Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "SELECT * FROM ACCOUNT_EMPLOYEE_JT " + 
+						"LEFT JOIN ACCOUNT ON ID = ACCOUNT_ID " + 
+						"WHERE EMPLOYEE_ID = " + i;
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				int id = rs.getInt("Account_ID");
+				double balance = rs.getDouble("balance");
+				
+				
+				
+				account = new Account(id, balance, 0, 0);
+				//list.add(account);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return account;
+		//return list;
+	}
+
+
+	@Override
+	public boolean withdraw(Account acc, double amount) {
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "UPDATE account "
+					+ "SET balance = ?"
+					+ "WHERE ID = ?";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			stmt.setDouble(1, acc.getTotalAmount() - amount);
+			stmt.setInt(2, acc.getAccountNumber());
+			
+		
+			return stmt.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+
+	@Override
+	public boolean deposit(Account acc, double amount) {
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "UPDATE account "
+					+ "SET balance = ?"
+					+ "WHERE ID = ?";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			stmt.setDouble(1, acc.getTotalAmount() + amount);
+			stmt.setInt(2, acc.getAccountNumber());
+			
+		
+			return stmt.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+
+	@Override
+	public boolean transfer(Account acc, double amount, int target) {
+try(Connection conn = ConnectionUtil.getConnection()) {
+			
+			String sql = "{ call transfer_funds(?, ?, ?) }";
+			
+			CallableStatement stmt = conn.prepareCall(sql);
+			
+			stmt.setInt(1, acc.getAccountNumber());
+			stmt.setInt(2, target);
+			stmt.setDouble(3, amount);
+			
+			return stmt.execute();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
+}

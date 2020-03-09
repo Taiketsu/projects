@@ -1,0 +1,14 @@
+package com.revature;
+
+import com.revature.services.EmployeeService;
+
+public class Driver {
+
+	public static void main(String[] args) {
+		
+		
+		System.out.println(new EmployeeService().findAll());
+		
+	}
+
+}

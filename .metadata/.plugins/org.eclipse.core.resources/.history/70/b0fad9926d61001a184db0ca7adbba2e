@@ -1,0 +1,35 @@
+package com.revature.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.model.Employee;
+import com.revature.repository.EmployeeDAOImpl;
+
+public class EmployeeMenu extends Menu{
+	
+	EmployeeDAOImpl empDAO = new EmployeeDAOImpl();
+
+	public void login() {
+		List<String> list = new ArrayList<>();
+		
+		list.add("Alright tell me your username!");
+		
+		printMenu(list);
+		
+		String input = INPUT.nextLine();
+		
+		Employee emp = empDAO.findEmployee(input);
+		
+		if(emp != null) {
+		success();
+		}else {
+			login();
+		}
+	}
+
+	private void success() {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -1,0 +1,16 @@
+
+^
+java:S11484"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8âºô²Š.HÚRMINORZVULNERABILITY
+`
+java:S4925-"-Remove this "Class.forName()", it is useless.(ùíÄé8ü»›³Š.HÛRMAJORZ
+CODE_SMELL
+w
+java:S21475"DCombine this catch with the one at line 51, which has the same body.(É®£8Ùå“‹‹.HÜRMINORZ
+CODE_SMELL
+m
+java:S1118":Add a private constructor to hide the implicit public one.(ò°ª8âºô²Š.HİRMAJORZ
+CODE_SMELL
+^
+java:S11486"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ùå“‹‹.HŞRMINORZVULNERABILITY
+s	java:S125"<This block of commented-out lines of code should be removed.(—ÇÉÅıÿÿÿÿ8º’ûŠ‹.HßRMAJORZ
+CODE_SMELL

@@ -1,0 +1,21 @@
+package com.revature.repository;
+
+import java.util.List;
+
+import com.revature.model.User;
+
+public class UserDAOImpl implements UserDOA{
+
+	@Override
+	public boolean insert() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<User> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

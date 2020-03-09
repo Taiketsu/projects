@@ -1,0 +1,39 @@
+package com.revature.repository;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.revature.model.User;
+import com.revature.util.ConnectionUtil;
+
+public class UserDAOImpl implements UserDOA{
+
+	@Override
+	public boolean insert(User user) {
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "INSERT INTO employees (first_name, last_name, email, ) VALUES (?, ?, ?, ?)";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			stmt.setString(1, user.getFirstName());
+			stmt.setString(2, user.getLastName());
+			stmt.setString(3, user.getEmail());
+			stmt.setDouble(4, user.getSalary());
+			
+			return stmt.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+
+	@Override
+	public List<User> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

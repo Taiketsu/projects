@@ -1,0 +1,65 @@
+package com.revature.repository;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
+import com.revature.model.Account;
+import com.revature.model.Employee;
+import com.revature.model.User;
+import com.revature.util.ConnectionUtil;
+
+public class EmployeeDAOImpl implements EmployeeDAO {
+
+
+	@Override
+	public boolean deleteUser(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Employee> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Employee findEmployee(String s) {
+		Employee emp = null;
+		
+		try (Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "SELECT * FROM employees" + 
+						"WHERE EMPLOYEE_ID = " + s;
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				int id = rs.getInt("Account_ID");
+				double balance = rs.getDouble("balance");
+				
+				
+				
+				emp = new Employee(id, balance, 0, 0);
+				//list.add(account);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return account;
+		//return list;
+	}
+
+	@Override
+	public boolean approveUser(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

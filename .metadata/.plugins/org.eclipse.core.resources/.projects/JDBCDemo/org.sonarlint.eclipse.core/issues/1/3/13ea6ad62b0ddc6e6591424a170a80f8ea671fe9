@@ -1,0 +1,15 @@
+
+z
+java:S2095/"GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ8é¥ƒ´Š.HRBLOCKERZBUG
+^
+java:S1148#"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8Ûèø³Š.HžRMINORZVULNERABILITY
+z
+java:S20951"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(ÊõÞàþÿÿÿÿ8é¥ƒ´Š.HŸRBLOCKERZBUG
+ˆ	java:S1176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ºåóÿÿÿÿÿ8×Ý‘´Š.H RMINORZ
+CODE_SMELL
+}
+java:S2095"OUse try-with-resources or close this "CallableStatement" in a "finally" clause.(‚‘ìÝ8ÂââŒ‹.H¡RBLOCKERZBUG
+ˆ	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ý°ú–úÿÿÿÿ8×Ý‘´Š.H¢RMINORZ
+CODE_SMELL
+^
+java:S1148>"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ÿ—§ºŠ.H£RMINORZVULNERABILITY

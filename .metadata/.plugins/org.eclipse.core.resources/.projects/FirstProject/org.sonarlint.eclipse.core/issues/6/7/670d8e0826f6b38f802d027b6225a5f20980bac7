@@ -1,0 +1,21 @@
+
+^
+java:S1148&"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Åï–ˆ.H¬RMINORZVULNERABILITY
+|
+java:S21474"DCombine this catch with the one at line 50, which has the same body.(÷­ë®úÿÿÿÿ8ÎĞ€—ˆ.HÀRMINORZ
+CODE_SMELL
+`	java:S1084")Either remove or fill this block of code.(÷­ë®úÿÿÿÿ8Ê€ú–ˆ.HºRMAJORZ
+CODE_SMELL
+m	java:S125"<This block of commented-out lines of code should be removed.(˜Ú:8Öˆ—ˆ.HÅRMAJORZ
+CODE_SMELL
+”
+java:S4087#"bRemove this "close" call; closing the resource is handled automatically by the try-with-resources.(İÛĞK8ÍÕš—ˆ.HÈRMINORZ
+CODE_SMELL
+[	java:S1082")Either remove or fill this block of code.(ï­£Ä8ÎĞ€—ˆ.HÁRMAJORZ
+CODE_SMELL
+n	java:S125"<This block of commented-out lines of code should be removed.(€®·Ò8Öˆ—ˆ.HÆRMAJORZ
+CODE_SMELL
+k
+java:S2118!"AMake the "java.util.List" class "Serializable" or don't write it.(şİœÆøÿÿÿÿH«RMAJORZBUG
+p	java:S106"9Replace this use of System.out or System.err by a logger.(÷°šÚúÿÿÿÿ8„§‚—ˆ.HÃRMAJORZ
+CODE_SMELL

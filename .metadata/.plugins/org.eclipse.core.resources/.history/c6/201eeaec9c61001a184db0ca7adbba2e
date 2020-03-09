@@ -1,0 +1,386 @@
+package com.revature.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.model.Account;
+import com.revature.model.Employee;
+import com.revature.model.User;
+import com.revature.repository.AccountDAOImpl;
+import com.revature.repository.EmployeeDAOImpl;
+import com.revature.repository.UserDAOImpl;
+
+public class EmployeeMenu extends Menu{
+	
+	EmployeeDAOImpl empDAO = new EmployeeDAOImpl();
+	AccountDAOImpl accDAO = new AccountDAOImpl();
+	UserDAOImpl userDAO = new UserDAOImpl();
+	private List<User> pending = new ArrayList<>();
+	private Employee emp;
+	
+
+	public void login() {
+		List<String> list = new ArrayList<>();
+		
+		list.add("Alright tell me your Employee ID!");
+		
+		printMenu(list);
+		
+		String input = INPUT.nextLine();
+		
+		while(!isInt(input)) {
+			System.out.println("Looks like you didn't put in a number");
+			System.out.println("Your emp ID should have been given to you");
+			System.out.println("and should be a number");
+			System.out.println("Please try again.");
+			
+			input = INPUT.nextLine();
+		}
+		
+		int id = Integer.parseInt(input);
+		
+		emp = empDAO.findEmployee(id);
+		
+		if(emp != null) {
+		success();
+		}else {
+			System.out.println("You either tried to make this fail or"
+					+ " it just didn't find the user");
+			login();
+		}
+	}
+
+	private void success() {
+		System.out.println("Found you!");
+		System.out.println("Please tell me your password!");
+		
+		String input = INPUT.nextLine();
+		
+		while(!input.equals(emp.getPassword())) {
+			System.out.println("Sorry that didn't match please try again");
+			input = INPUT.nextLine();
+			
+		}
+		
+		
+			checkPendingUsers();
+		
+	}
+	
+	private void checkPendingUsers() {
+		pending = empDAO.getAllPending();
+		
+		if(pending.isEmpty()) {
+					
+			MainMenu();
+		}else {
+			System.out.println("There are pending users for you to approve.");
+			System.out.println("Press enter to continue...");
+		
+			INPUT.nextLine();
+		
+			MainMenu();
+		}
+	}
+
+	private void MainMenu() {
+		System.out.println("Welcome back, " + emp.getFirstName() + " " + emp.getLastName());
+		System.out.println("What would you like to do?");
+		System.out.println("Search for a user: Type search");
+		System.out.println("Approve a pending account: type approve");
+		System.out.println("Cancel Account: Type cancel");
+		
+		String input = INPUT.nextLine();
+		
+		switch(input.toLowerCase()) {
+		case "search":
+			SearchUser();
+			break;
+		case "approve":
+			ApproveAccount();
+			break;
+		case "cancel":
+			CancelAccount();
+			break;
+		default:
+			System.out.println("I didn't catch that please try again");
+			
+			MainMenu();
+		}
+		
+	}
+
+	private void CancelAccount() {
+		System.out.println("please enter the user id number of the account\n"
+				+ " you would like to cancel!");
+		
+		String input = INPUT.nextLine();
+		
+		while(!isInt(input)) {
+			System.out.println("Sorry you must put in a number.");
+			System.out.println("Please try again!");
+			
+			input = INPUT.nextLine();
+		}
+		
+		int empID = Integer.parseInt(input);
+		
+		User user = userDAO.findUser(empID);
+		
+		Account account = accDAO.findAccount(empID);
+		
+		System.out.println("I found this account:");
+		System.out.println("Account number: " + account.getAccountNumber());
+		System.out.println("Account Balance: " + account.getTotalAmount());
+		System.out.println("Owner First name: " + user.getFirstName());
+		System.out.println("Owner Last Name: " + user.getLastName());
+		System.out.println("Owner Email: " + user.getEmail());
+		System.out.println("Cancel this account?");
+		
+		input = INPUT.nextLine();
+		
+		switch(input.toLowerCase()) {
+		case "yes":
+			System.out.println("Cancelling account now.");
+			empDAO.cancelAccount(user, account);
+			System.out.println("Okay account cancelled!");
+			System.out.println("I'll send you back to the previous menu!");
+			System.out.println("Press enter to continue");
+			
+			INPUT.nextLine();
+			MainMenu();
+			break;
+		case "no":
+			
+			break;
+		default:
+			System.out.println("Sorry I didn't understand that?");
+			System.out.println("I'll send you back to the beginning.");
+			CancelAccount();
+		}
+		
+	}
+
+	private void ApproveAccount() {
+		System.out.println("sent to approve account");
+		
+	}
+
+	private void SearchUser() {
+		System.out.println("please enter the user id number of the account\n"
+				+ " you would like to find!");
+		
+		String input = INPUT.nextLine();
+		
+		while(!isInt(input)) {
+			System.out.println("Sorry you must put in a number.");
+			System.out.println("Please try again!");
+			
+			input = INPUT.nextLine();
+		}
+		
+		int empID = Integer.parseInt(input);
+		
+		User user = userDAO.findUser(empID);
+		
+		Account account = accDAO.findAccount(empID);
+		
+		System.out.println("I found this user!");
+		
+		System.out.println("Name: " + user.getFirstName() + " " + user.getLastName());
+		System.out.println("email: " + user.getEmail());
+		System.out.println("Account Number: " + account.getAccountNumber());
+		System.out.println("Available balance " + account.getTotalAmount());
+		System.out.println("Is there anything you would like to do with this account?");
+		System.out.println("Type yes or no.");
+		
+		input = INPUT.nextLine();
+		
+		switch(input.toLowerCase()) {
+		case "yes":
+			System.out.println("Alright!");
+			nextMenu(user, account);
+			break;
+		case "no":
+			System.out.println("Okay I'll send you back to the previous menu!");
+			
+			MainMenu();
+			break;
+		default:
+			System.out.println("Sorry I didn't catch that.");
+			System.out.println("please try again!");
+			
+			SearchUser();
+		}
+		
+	}
+	
+	private void nextMenu(User user, Account acct) {
+		List<String> list = new ArrayList<>();
+		
+		list.add("What would you like to do?");
+		list.add("Deposit");
+		list.add("Withdraw");
+		list.add("Transfer");
+		
+		printMenu(list);
+		
+		list.clear();
+		
+		switch(INPUT.nextLine().toLowerCase()) {
+		case "deposit":
+			depositMoney();
+			break;
+		case "withdraw":
+			withdrawMoney();
+			break;
+		case "transfer":
+			transferMoney(user, acct);
+			break;
+		default:
+			list.add("Sorry I didn't catch that please try again");
+			list.add("Press Enter to continue");
+			
+			printMenu(list);
+			
+			INPUT.nextLine();
+			
+			nextMenu(user, acct);
+		}
+	}
+
+	private void transferMoney(User user, Account acct) {
+		System.out.println("How much would you like to transfer?");
+		
+		String input = INPUT.nextLine();
+		while(!isNumber(input)) {
+			System.out.println("Sorry but you must enter a number");
+			System.out.println("Please try again!");
+			System.out.println("Please enter a number.");
+			
+			INPUT.nextLine();
+			
+			}		
+				
+			double amount = Double.parseDouble(input);
+			
+			System.out.println("What account did you want to transfer to?");
+			
+			input = INPUT.nextLine();
+			while(!isInt(input)) {
+				System.out.println("Sorry but you must enter a number");
+				System.out.println("Please try again!");
+				System.out.println("Please enter a number.");
+				
+				input = INPUT.nextLine();
+			}
+			
+			int otherAcct = Integer.parseInt(input);
+			
+		if(amount <=0 || otherAcct <=0 ) {
+			System.out.println("Sorry! amount or account ID cannot be 0 or less than 0");
+			System.out.println("Please try again!");
+			System.out.println("Press enter to continue..");
+				
+			INPUT.nextLine();
+			transferMoney(user, acct);
+		}else {
+			System.out.println("Alright I am transferring the funds now!");
+			accDAO.transfer(acct, amount, otherAcct);
+			
+			System.out.println("Alright that's done now!");
+			System.out.println("I'll send you back to the previous menu!");
+			System.out.println("Press enter to continue...");
+					
+			INPUT.nextLine();
+			MainMenu();
+		}	
+		
+	}
+
+	private void depositMoney() {
+		List<String> list = new ArrayList<>();
+		
+		list.add("How much would you like to deposit?");
+		
+		printMenu(list);
+		
+		String input = INPUT.nextLine();
+		
+		list.clear();
+		while(!isNumber(input)) {
+			list.add("Sorry but you must enter a number");
+			list.add("Please try again!");
+			list.add("Please enter to a number now");
+			
+			printMenu(list);
+			INPUT.nextLine();
+			
+			list.clear();
+			
+			}		
+				
+			double amount = Double.parseDouble(input);
+			
+			
+		if(amount <=0) {
+			list.add("Sorry! amount cannot be 0 or less than 0");
+			list.add("Please try again!");
+			list.add("Press enter to continue..");
+			
+			printMenu(list);
+			
+			list.clear();
+			INPUT.nextLine();
+			depositMoney();
+		}else {
+			System.out.println("Alright I am depositing into the account now!");
+			aDI.deposit(acct, amount);
+			currBal += amount;
+			list.add("Alright that's done now!");
+			list.add("I'll send you back to the previous menu!");
+			list.add("Press enter to continue...");
+			
+			printMenu(list);
+			
+			list.clear();
+			INPUT.nextLine();
+			
+		}	
+	}
+
+	private void withdrawMoney() {
+		System.out.println("How much would you like to withdraw?");
+		
+		String input = INPUT.nextLine();
+		if(isNumber(input)) {
+			double amount = Double.parseDouble(input);
+			
+			if(amount <=0) {
+				System.out.println("Sorry! amount cannot be 0 or less than 0");
+				System.out.println("Please try again!");
+				System.out.println("Press enter to continue..");
+				
+				INPUT.nextLine();
+				withdrawMoney();
+			}else {
+				System.out.println("Alright I am withdrawing from the account now!");
+				aDI.withdraw(acct, amount);
+					currBal -= amount;
+					System.out.println("Alright that's done now!");
+					System.out.println("I'll send you back to the previous menu!");
+					System.out.println("Press enter to continue...");
+					
+					INPUT.nextLine();
+					displayAccountInfo();
+				}	
+		}else {
+			System.out.println("Sorry but you must enter a number");
+			System.out.println("Please try again!");
+			System.out.println("Press enter to continue...");
+			
+			INPUT.nextLine();
+			withdrawMoney();
+		}
+	}
+}

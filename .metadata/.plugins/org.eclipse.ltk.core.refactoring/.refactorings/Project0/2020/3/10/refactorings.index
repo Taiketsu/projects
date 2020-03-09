@@ -1,0 +1,16 @@
+1583254718503	Extract method 'checkStart'
+1583268399841	Delete element
+1583330981880	Extract method 'extracted'
+1583332843577	Extract method 'signUpLogic'
+1583346881445	Move compilation unit
+1583346888677	Move compilation unit
+1583346895550	Move compilation unit
+1583348355124	Delete element
+1583349598456	Extract method 'checkUserInput'
+1583353625215	Extract method 'checkFalse'
+1583369339761	Extract method 'extracted'
+1583456724158	Extract method 'getUserInfo'
+1583510574329	Delete element
+1583511248010	Delete element
+1583512170640	Move compilation unit
+1583530959413	Extract method 'handleChoice'

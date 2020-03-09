@@ -1,0 +1,13 @@
+package com.revature;
+
+import java.util.Scanner;
+
+public class Menu {
+	
+	static Scanner sc = new Scanner(System.in);
+	
+	public void Start() {
+		System.out.println("Hello! Welcome to");
+	}
+
+}

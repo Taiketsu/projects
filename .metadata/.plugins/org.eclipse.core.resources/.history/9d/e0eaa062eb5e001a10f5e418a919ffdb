@@ -1,0 +1,13 @@
+package com.revature.repository;
+
+import java.util.List;
+
+import com.revature.model.User;
+
+public interface UserDOA {
+	
+	public boolean insert();
+	
+	public List<User> getAll();
+
+}

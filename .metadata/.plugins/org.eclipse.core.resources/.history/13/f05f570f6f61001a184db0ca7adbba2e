@@ -1,0 +1,17 @@
+package com.revature.repository;
+
+import java.util.List;
+
+import com.revature.model.Employee;
+import com.revature.model.User;
+
+public interface EmployeeDAO {
+	
+	
+	public boolean approveUser(User user);
+	public boolean deleteUser(User user);
+	public Employee findEmployee(String s);
+	public List<Employee> getAll();
+	
+
+}

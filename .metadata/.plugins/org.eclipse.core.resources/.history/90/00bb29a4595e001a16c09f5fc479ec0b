@@ -1,0 +1,26 @@
+package com.revature.services;
+
+import java.util.List;
+
+import com.revature.models.Employee;
+import com.revature.repository.EmployeeDOA;
+import com.revature.repository.EmployeeDOAImpl;
+
+public class EmployeeService {
+	
+	EmployeeDOA repository = null;
+
+	public EmployeeService() {
+		super();
+		this.repository = new EmployeeDOAImpl();
+	}
+
+	public EmployeeService(EmployeeDOA repository) {
+		super();
+		this.repository = repository;
+	}
+	
+	public List<Employee> findAll(){
+		return repository.findAll();
+	}
+}

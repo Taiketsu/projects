@@ -1,0 +1,13 @@
+package com.revature.services;
+
+public class EmployeeMenu extends Menu{
+
+	public void login() {
+		success();
+	}
+
+	private void success() {
+		// TODO Auto-generated method stub
+		
+	}
+}

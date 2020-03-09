@@ -11,14 +11,18 @@ public class ConnectionUtil {
 	
 	public static Connection getConnection() {
 		try {
+			
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		
 		// This uses reflection to confirm that a class with this
 		// fully qualified name is available
 		
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@dbtraining.cgprctiahy3l.us-east-2.rds.amazonaws.com:1521:ORCL",
-					"john", "securepassword");
+			
+			String[] creds = System.getenv("DBCreds").split(";");
+			
+			conn = DriverManager.getConnection(creds[0], creds[1], creds[2]);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

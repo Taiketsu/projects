@@ -1,0 +1,130 @@
+package com.revature.services;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import com.revature.model.User;
+
+public class GeneralMenu {
+	
+	
+	public static final Scanner INPUT = new Scanner(System.in);
+	public static final String HEADER = "+++++++++++++++++++++++++++++++++++++++++++++";
+	ArrayList<User> users = new ArrayList<>();
+	
+	public void startMenu() {
+		
+		
+		
+		System.out.println(HEADER);
+		System.out.println("Welcome to Revature Banking!");
+		System.out.println("What would you like to do today?");
+		System.out.println("log in");
+		System.out.println("sign up");
+		System.out.println("please type your response and use the actions I have given you.");
+		System.out.println(HEADER);
+		decisionTree();
+	}
+
+	private void decisionTree() {
+		String s;
+		s = INPUT.nextLine();
+		switch(s) {
+		case "log in":
+			login();
+			break;
+		case "sign up":
+			signup();
+			break;
+		default:
+			System.out.println("I didn't understand that. Please try again.");
+			decisionTree();
+		}
+	}
+
+	private void signup() {
+		System.out.println(HEADER);
+		System.out.println("Alright let's get going then!");
+		System.out.println("First tell me what you would like your username to be.");
+		System.out.println("This is not case sensitive but it does have to be unique!");
+		System.out.println(HEADER);
+		String s = INPUT.nextLine();
+		
+		signUpLogic(s);
+	}
+
+	private void signUpLogic(String s) {
+		if(!s.equals("")) {
+			boolean bool = true;
+			boolean trueBool = false;
+			for(User user : users) {
+				bool = checkUserInput(s, user);
+				if(bool == true) {
+					trueBool = true;
+				}
+					}
+			checkFalse(s, trueBool);
+		}else {
+			System.out.println("Your username cannot be blank!");
+			signUpLogic(INPUT.nextLine());
+		}
+	}
+
+	private void checkFalse(String s, boolean bool) {
+		if(bool == false) {
+			String firstName = null;
+			String lastName = null;
+			String email = null;
+			String p = null;
+			
+			System.out.println("Username accepted! Please make your password \n"
+				+ "This is case sensitive!");
+			p = INPUT.nextLine();
+		
+			
+			
+			System.out.println("Alright user has been created!");
+			System.out.println("I am now going to send you back to the main menu.");
+			System.out.println("Press Enter to continue...");
+			
+			INPUT.nextLine();
+			startMenu();
+		}else {
+			System.out.println("I'm sorry that was already taken. Please try a new name.");
+			signUpLogic(INPUT.nextLine());
+		}
+	}
+
+	private boolean checkUserInput(String s, User user) {
+		if(!s.toLowerCase().equalsIgnoreCase(user.getUserName())) {
+			return false;
+		}
+		return true;
+		
+	}
+	
+
+	private void login() {
+		boolean bool = false;
+		User loggedUser = null;
+		
+		System.out.println("Welcome back!");
+		System.out.println("Please tell me your username!");
+		String s = INPUT.nextLine();
+		
+		for(User user : users) {
+			bool = checkUserInput(s, user);	
+			if(bool == true) {
+				loggedUser = user;}
+		}
+		if(bool == true) {
+			System.out.println("Welcome back, " + loggedUser.getUserName() + "!");
+			System.out.println("What is your password?");
+		}else {
+			System.out.println("I'm sorry I couldn't find a user named that.");
+			System.out.println("Please check your spelling and try again.");
+		}
+	}	
+	
+
+}

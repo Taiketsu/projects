@@ -1,0 +1,22 @@
+package com.revature.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class EmployeeMenu extends Menu{
+
+	public void login() {
+		List<String> list = new ArrayList<>();
+		
+		list.add("Alright tell me your username!");
+		
+		String input =
+		
+		success();
+	}
+
+	private void success() {
+		// TODO Auto-generated method stub
+		
+	}
+}

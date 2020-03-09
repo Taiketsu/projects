@@ -1,0 +1,9 @@
+package com.revature;
+
+public class Account {
+	
+	private int totalAmount;
+	private int debitAmount;
+	private int creditAmount;
+
+}

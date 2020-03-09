@@ -1,0 +1,60 @@
+package com.revature.repository;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.revature.model.Employee;
+import com.revature.model.User;
+import com.revature.util.ConnectionUtil;
+
+public class EmployeeDAOImpl implements EmployeeDAO {
+
+	@Override
+	public boolean insert(Employee emp) {
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "INSERT INTO employees (user_name, password, first_name, last_name, email) VALUES (?, ?, ?, ?, ?)";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			stmt.setString(1, user.getUserName());
+			stmt.setString(2, user.getPassword());
+			stmt.setString(3, user.getFirstName());
+			stmt.setString(4, user.getLastName());
+			stmt.setString(5, user.getEmail());
+			stmt.setString(6, );
+		
+			
+			return stmt.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public List<User> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean insertPending(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean insert(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean insertPending(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

@@ -1,0 +1,16 @@
+package com.revature;
+
+import com.revature.services.GeneralMenu;
+
+public class Driver {
+	
+	static GeneralMenu menu = new GeneralMenu();
+
+	public static void main(String[] args) {
+		
+		menu.startMenu();
+		
+		menu.INPUT.close();
+	}
+
+}
